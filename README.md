@@ -76,8 +76,15 @@ curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
 hydra -l <username> -P given_wordlist ftp://$ip
 https://github.com/frizb/Hydra-Cheatsheet
 
+## Find Domain Controller
+https://serverfault.com/questions/78089/find-name-of-active-directory-domain-controller
+### Find FDQN
+https://www.google.com/search?q=determine+FDQN+of+remote+domain+controller&client=firefox-b-d&sca_esv=a7c8b91352f94de3&sxsrf=ADLYWIKttXggW1UFvbeJvw7jxaG1ZFa0Qg%3A1732694251615&ei=69BGZ8inJcmO4-EP0t3G8Qo&ved=0ahUKEwiIyfyKhfyJAxVJxzgGHdKuMa4Q4dUDCA8&uact=5&oq=determine+FDQN+of+remote+domain+controller&gs_lp=Egxnd3Mtd2l6LXNlcnAiKmRldGVybWluZSBGRFFOIG9mIHJlbW90ZSBkb21haW4gY29udHJvbGxlcjIKECEYoAEYwwQYCjIKECEYoAEYwwQYCjIKECEYoAEYwwQYCkjbEFCvBVj9CnABeAGQAQCYAb0CoAHXCqoBBzAuNi4wLjG4AQPIAQD4AQGYAgKgApwBwgIKEAAYsAMY1gQYR5gDAOIDBRIBMSBAiAYBkAYIkgcDMS4xoAfbOA&sclient=gws-wiz-serp
 
 
+### Entropy of ELF
+https://github.com/sandflysecurity/sandfly-entropyscan
+Entry point for ELF: readelf -a executable_name
 
 
 
