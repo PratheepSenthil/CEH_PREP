@@ -23,7 +23,7 @@ sudo xsltproc nmap_out_all.xml nmap_$ip1_out_all.html
 cd CEH;mkdir $ip;cd $ip;sudo nmap -O -T5 -sV -sC -oA nmap_$ip\_out -vv $ip/24;sudo xsltproc nmap_$ip\_out.xml -o nmap_$ip\_out.html;
 
 ### All ports
-sudo nmap -O -T5 -sV -sC -p- -oA nmap_$ip\_out_all -vv $ip/24;sudo xsltproc nmap_$ip\_out_all.xml -o nmap_$ip\_out_all.html;
+sudo nmap -O -T5 -sV -sC -p- -oA nmap_$ip\\_out_all -vv $ip/24;sudo xsltproc nmap_$ip\\_out_all.xml -o nmap_$ip\\_out_all.html;
 
 
 
