@@ -20,6 +20,8 @@ sudo apt install enum4linux
 
 sudo apt install xsltproc
 
+sudo apt install adb
+
 sudo gem install wpscan
 
 
