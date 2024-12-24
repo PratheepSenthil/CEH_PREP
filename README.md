@@ -1,3 +1,6 @@
+python -c 'import zlib; print(zlib.decompress(open("593.zlib", "rb").read()))' > output_file
+
+
 sudo su
 
 vi get-stuff.sh
